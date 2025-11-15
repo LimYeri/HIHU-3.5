@@ -1,0 +1,139 @@
+{% extends 'headerBox.html' %}
+{% load static %}
+{% block head %}
+    <title>HIHU3.5</title>
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/place_detail.css' %}">
+    {{ block.super }}
+{% endblock %}
+{% block content %}
+    <div id="PlaceDetailApp" v-cloak>
+        <div class="hero">
+            <div class="shopDetailHero">
+                <div class="menuTitle">
+                    <!-- 식당 / 카페 / 주점 / 전체 등 -->
+                    <h2 class="tSemi menuTText tBlack">[[ shopKind ]]</h2>
+                </div>
+
+                <div class="shopDetailBox">
+                    <!-- 왼쪽 매장 리스트 -->
+                    <div class="shopListScroll">
+                        <a v-for="shop in shopList"
+                        :key="shop.id"
+                        class="shopListName mainText"
+                        :class="isActiveShop(shop) ? 'tMain' : 'tBlack'"
+                        :href="getShopUrl(shop.id)">
+                            <p>[[ shop.name ]]</p>
+                        </a>
+                    </div>
+
+                    <!-- 오른쪽 상세 -->
+                    <div class="shopDetailScroll" v-if="shopDetail && shopDetail.id">
+                        <div class="shopDetailTop">
+                            <div class="shopDetailNameBox">
+                                <p class="shopDetailName tBlack menuTText">
+                                    [[ shopDetail.name ]]
+                                </p>
+                            </div>
+
+                            <div class="shopDetailTopBox">
+                                <div class="shopDetailImgBox">
+                                    <!-- 이미지: DRF에서 상대경로로 내려옴 (예: /media/place/xxx.png) -->
+                                    <img v-if="shopDetail.image"
+                                        class="shopDetailImg"
+                                        :src="shopDetail.image"
+                                        alt="">
+                                    <img v-else
+                                        class="shopDetailImg"
+                                        src="{% static 'img/DefaultImg.png' %}"
+                                        alt="">
+                                </div>
+
+                                <div class="shopDetailTextBox">
+                                    <template v-if="shopDetail.phone">
+                                        <p class="shopDetailCate tBlack bigmainText">연락처</p>
+                                        <p class="tBlack mainText shopDetailTextCenter">
+                                            [[ shopDetail.phone ]]
+                                        </p>
+                                    </template>
+
+                                    <p class="shopDetailCate tBlack bigmainText">영업시간</p>
+                                    <p class="tBlack mainText shopDetailTextCenter">
+                                        [[ shopDetail.opening_hours ]]
+                                    </p>
+
+                                    <p class="shopDetailCate tBlack bigmainText">주소</p>
+                                    <p class="tBlack mainText shopDetailTextCenter">
+                                        [[ shopDetail.address ]]
+                                    </p>
+
+                                    <a v-if="shopDetail.location_link"
+                                    :href="shopDetail.location_link"
+                                    class="shopDetailMap"
+                                    target="_blank" rel="noopener noreferrer">
+                                        <img class="naverMapIcon"
+                                            src="{% static 'img/naverMap.jpeg' %}"
+                                            alt="">
+                                        <p class="tBlack mainText">위치보러가기</p>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 메뉴 영역 -->
+                        <div class="shopDetailBottom">
+                            <div class="shopDetailMenuBox">
+                                <ul class="menuCateBox">
+                                    <!-- groupedMenus: { "COFFEE": [...], "MEAL": [...] } 형태 -->
+                                    <template v-for="(menus, category) in groupedMenus" :key="category">
+                                        <div class="menuCategory">
+                                            <p class="tBlack bigmainText">[[ category ]]</p>
+                                        </div>
+
+                                        <li v-for="m in menus" :key="m.id" class="menu">
+                                            <div class="menuName">
+                                                <p class="tBlack mainText">[[ m.name ]]</p>
+                                            </div>
+                                            <div class="menuPrice">
+                                                <div class="menuPriceNum">
+                                                    <p class="tBlack mainText">
+                                                        [[ formatPrice(m.price) ]]
+                                                    </p>
+                                                </div>
+                                                <div class="menuPriceWon">
+                                                    <p class="tBlack mainText">원</p>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </template>
+
+                                    <!-- 메뉴가 없을 때 -->
+                                    <li v-if="!Object.keys(groupedMenus).length"
+                                        class="menu">
+                                        <div class="menuName">
+                                            <p class="tBlack mainText">등록된 메뉴가 없습니다.</p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block scripts %}
+    <script src = "https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
+    <script src = "{% static 'js/subHeader.js' %}"></script>
+
+
+    <!-- Vue & Axios CDN -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <!-- Vue 파일 -->
+    <script src="{% static 'js/vue/place_detail.js' %}"></script>
+{% endblock %}

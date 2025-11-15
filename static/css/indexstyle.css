@@ -1,0 +1,310 @@
+@media screen and (max-width: 420px){
+    .schoolSection {
+        flex-direction: column;
+    }
+    .schCalender {
+        display: none;
+    }
+    .schNotice {
+        display: none;
+    }
+    .hihuNotice {
+        display: none;
+        justify-content: center;
+    }
+    .hNTitle {
+        display: none;
+    }
+    .controller {
+        display: none;
+    }
+    .textSlideContainer p {
+        font-size: 14px;
+        font-family: 'Lato';
+    }
+    .textSlideContainer h3 {
+        font-size: 30px;
+        font-family: 'Lato';
+    }
+    .textSlideContainer {
+        font-size: 16px;
+        position: absolute;
+        z-index: 1;
+    
+        left: 16px;
+        bottom: 300px;
+    }
+}
+
+@media screen and (max-width: 960px) and (min-width: 420px) {
+    .schoolSection {
+        flex-direction: column;
+    }
+    .schCalender {
+        width: 100vw;
+    }
+    .schNotice {
+        display: none;
+    }
+    .hihuNotice {
+        display: flex;
+    }
+    .controller {
+        display: none;
+    }
+    .textSlideContainer p {
+        font-size: 28px;
+        font-family: 'Lato';
+    }
+    .textSlideContainer h3 {
+        font-size: 60px;
+        font-family: 'Lato';
+    }
+    .textSlideContainer {
+        font-size: 16px;
+        position: absolute;
+        z-index: 1;
+    
+        left: 134px;
+        bottom: 300px;
+    }
+}
+
+@media screen and (min-width: 960px) {
+    .schCalender {
+        width: 50vw;
+    }
+    .schNotice {
+        display: flex;
+    }
+    .hihuNotice {
+        display: flex;
+    }
+    .controller {
+        display: flex;
+    }
+    .textSlideContainer p {
+        font-size: 28px;
+        font-family: 'Lato';
+    }
+    .textSlideContainer h3 {
+        font-size: 60px;
+        font-family: 'Lato';
+    }
+    .textSlideContainer {
+        font-size: 16px;
+        position: absolute;
+        z-index: 1;
+    
+        left: 134px;
+        bottom: 300px;
+    }
+}
+
+/*body 전체 영역*/
+.hero {
+    height: calc(100vh - 120px);
+    position: static;
+}
+
+/*슬라이드 배너 부분*/
+.slideBanner {
+    position: relative;
+    /* height: calc(100vh - 314px); */
+    min-height: calc(100vh - 186px);
+    /* width: 100%; */
+    /* overflow: hidden; */
+}
+
+.slideImg {
+    min-height: calc(100vh - 186px);
+    width: 100vw;
+    object-fit: cover;
+}
+
+.slider {
+    display: flex;
+    /* position: absolute; */
+    position: relative;
+    z-index: -1;
+    width: 100vw;
+    height: calc(100vh - 186px);
+    /* margin: 0 auto; */
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.slides {
+    display: flex;
+    position: absolute;
+    height: calc(100vh - 186px);
+    left: 0;
+    top: 0;
+    transition: 0.5s ease-out;
+}
+
+.slides li {
+    flex: 0 0 100vw;   /* 슬라이드 하나가 화면 가로 100% 차지 */
+    position: relative;
+    list-style: none;
+}
+
+.controller {
+    font-size: 16px;
+    position: absolute;
+    z-index: 1;
+
+    right: 134px;
+    bottom: 150px;
+}
+
+.playController {
+    display: flex;
+}
+
+/* .conButton {
+    background-color: transparent;
+    border: none;
+} */
+
+.bannerCon {
+    width: 8px;
+    height: 12px;
+    margin-left: 8px;
+    cursor:pointer;
+}
+
+.bannerCon:hover {
+    cursor: pointer;
+}
+
+.bannerConPlay {
+    width: 6px;
+    height: 12px;
+    margin-left: 8px;
+    cursor: pointer;
+}
+
+.progressWrap {
+    display: flex;
+    align-items: center;
+}
+
+.progress {
+    /* -webkit-appearance: none; */
+    width: 150px;
+    height: 4px;
+    background-color: white;
+    align-items: center;
+    margin-left: 16px;
+    display: flex;
+}
+
+.bar {
+    width: 0%;
+    height: 4px;
+    background-color: #EE5B3B;
+}
+
+.page {
+    margin-left: 8px;
+}
+
+/*학교 관련 공지*/
+.schoolSection {
+    position: absolute;
+    bottom: 66px;
+    display: flex;
+    height: 128px;
+}
+
+.schCalender {
+    /* width: 50vw; */
+    /* min-width: 500px; */
+    background-color: rgba(238, 91, 59, 0.9);
+    color: white;
+
+    padding-top: 24px;
+    padding-left: 100px;
+    padding-right: 40px;
+    padding-bottom: 24px;
+}
+
+.schCalTitle {
+    display: flex;
+    justify-content: space-between;
+}
+
+.schCalText {
+    display: flex;
+    flex-direction: column;
+
+    margin-top: 19px;
+}
+
+.schCalList {
+    display: flex;
+    justify-content: end;
+    justify-content: space-between;
+}
+
+/* .listCategory {
+    width: 30px;
+} */
+
+.listTitle {
+    width: 160px;
+    /* margin-left: 215px;
+    margin-right: 53px; */
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.listDate {
+    /* width: 82px; */
+    width: 180px;
+    display: flex;
+    justify-content: end;
+}
+
+.schNotice {
+    width: 50vw;
+    /* min-width: 500px; */
+    background-color: rgba(64, 64, 64, 0.9);
+    color: white;
+    flex-direction: column;
+    justify-content: space-between;
+
+    padding-top: 24px;
+    padding-left: 40px;
+    padding-right: 100px;
+    padding-bottom: 24px;
+}
+
+.schNoticeGo {
+    margin-top: 42px;
+    display: flex;
+    justify-content: end;
+}
+
+/*hihu 관련 공지*/
+.hihuNotice {
+    width: 100vw;
+    height: 66px;
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border-bottom: 1px solid #c3c3c3;
+
+    position: absolute;
+    bottom: 0px;
+
+    padding-left: 100px;
+    padding-right: 100px;
+}
+
+.hNTitle {
+    margin-right: 40px;
+}

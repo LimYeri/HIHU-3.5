@@ -1,0 +1,128 @@
+{% extends 'headerBox.html' %}
+{% load static %}
+{% block head %}
+    <title>HIHU3.5</title>
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/calendarStyle.css' %}">
+    {{ block.super }}
+{% endblock %}
+{% block content %}
+    <div id="ScheduleApp" v-cloak>
+        <div class="hero">
+            <div class="calendarHero">
+                <div class="menuTitle">
+                    <h2 class="tSemi menuTText tBlack">학사일정</h2>
+                </div>
+                <div class="calendarListPart">
+                    <!-- 📅 캘린더 영역 -->
+                    <div class="calendarContainer">
+                        <div class="sec_cal">
+                            <div class="cal_nav">
+                                <!-- 이전/다음 월 이동 -->
+                                <a href="javascript:;" class="nav-btn go-prev mainText"
+                                @click.prevent="goPrevMonth">
+                                    prev
+                                </a>
+                                <div class="year-month menuTText">
+                                    [[ year ]].[[ month ]]
+                                </div>
+                                <a href="javascript:;" class="nav-btn go-next mainText"
+                                @click.prevent="goNextMonth">
+                                    next
+                                </a>
+                            </div>
+                            <div class="cal_wrap">
+                                <div class="days">
+                                    <div class="day mainText">월</div>
+                                    <div class="day mainText">화</div>
+                                    <div class="day mainText">수</div>
+                                    <div class="day mainText">목</div>
+                                    <div class="day mainText">금</div>
+                                    <div class="day mainText">토</div>
+                                    <div class="day mainText">일</div>
+                                </div>
+                                <div class="dates mainText">
+                                    <!-- 날짜 버튼들 -->
+                                    <button
+                                        v-for="day in calendarDays"
+                                        :key="day.key"
+                                        class="day"
+                                        :class="dayClasses(day)"
+                                        @click="onClickDay(day)"
+                                        :disabled="!day.inCurrentMonth"
+                                    >
+                                        [[ day.day ]]
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 📋 일정 목록 영역 -->
+                    <div class="listPartContainer">
+                        <div class="listPart">
+                            <!-- 로딩 -->
+                            <div v-if="loading" class="calendarList">
+                                <div class="objectBox">
+                                    <p class="tBlack mainText">일정을 불러오는 중입니다...</p>
+                                    <p class="tGrey subText"></p>
+                                </div>
+                            </div>
+
+                            <!-- 에러 -->
+                            <div v-else-if="error" class="calendarList">
+                                <div class="objectBox">
+                                    <p class="tBlack mainText">[[ error ]]</p>
+                                    <p class="tGrey subText"></p>
+                                </div>
+                            </div>
+
+                            <!-- 일정 없음 -->
+                            <div v-else-if="schedules.length === 0" class="calendarList">
+                                <div class="objectBox">
+                                    <p class="tBlack mainText">일정이 없습니다.</p>
+                                    <p class="tGrey subText"></p>
+                                </div>
+                            </div>
+
+                            <!-- 일정 목록 -->
+                            <div v-else
+                                v-for="event in schedules"
+                                :key="event.id"
+                                class="calendarList">
+                                <div class="objectBox">
+                                    <p class="tBlack mainText">
+                                        [[ event.title ]]
+                                    </p>
+                                    <p class="tGrey subText">
+                                        <span v-if="!event.end_date || event.start_date === event.end_date">
+                                            [[ formatDateKorean(event.start_date) ]]
+                                        </span>
+                                        <span v-else>
+                                            [[ formatDateKorean(event.start_date) ]] -
+                                            [[ formatDateKorean(event.end_date) ]]
+                                        </span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /listPartContainer -->
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block scripts %}
+    <script src = "https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
+    <script src = "{% static 'js/subHeader.js' %}"></script>
+
+
+    <!-- Vue & Axios CDN -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <!-- Vue 파일 -->
+    <script src="{% static 'js/vue/calendar.js' %}"></script>
+{% endblock %}

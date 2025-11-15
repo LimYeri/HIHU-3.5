@@ -1,0 +1,73 @@
+# ============================================================
+# Python-generated files
+# ============================================================
+__pycache__/
+*.py[oc]
+*.pyo
+*.pyd
+
+build/
+dist/
+wheels/
+*.egg-info
+.eggs/
+
+
+# ============================================================
+# uv / Virtual environments
+# ============================================================
+.venv/
+.uv/
+.uv-cache/
+uv.lock
+
+# ============================================================
+# Django
+# ============================================================
+# Static files collected for deployment
+/staticfiles/
+
+# User-uploaded files
+media/
+uploads/
+
+# Django logs
+django.log
+
+# Environment variables
+.env
+.env.*
+
+# SQLite (local dev DB)
+db.sqlite3
+
+secrets.json
+
+# ============================================================
+# Vue / Frontend
+# ============================================================
+node_modules/
+dist/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Vite / Vue / bundler cache
+.vite/
+*.local
+
+# ============================================================
+# OS / IDE files
+# ============================================================
+.DS_Store
+Thumbs.db
+
+.vscode/
+.idea/
+*.iml
+
+# ============================================================
+# Coverage / Test
+# ============================================================
+.coverage
+htmlcov/

@@ -1,0 +1,82 @@
+{% extends 'headerBox.html' %}
+{% load static %}
+{% block head %}
+    <title>HIHU3.5</title>
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/notice_detail.css' %}">
+    {{ block.super }}
+{% endblock %}
+{% block content %}
+    <div id="NoticeDetailApp" v-cloak>
+        <div class = "hero">
+            <div class="hihuNoticeHero">
+                <div class="menuTitle">
+                    <h2 class="tSemi menuTText tBlack">HIHU 공지</h2>
+                </div>
+
+                <div class="noticeBox" v-if="post">
+                    <div class="noticeListBox">
+                        <!-- 제목 + 날짜 -->
+                        <div class="noticeListM">
+                            <div class="listNum">
+                                <span class="tBlack mainText">
+                                    [[ post.title ]]
+                                </span>
+                            </div>
+                            <div class="listDate">
+                                <span class="tBlack mainText">
+                                    [[ formatDate(post.created_at) ]]
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- 본문 + 이미지 -->
+                        <div class="noticeTextBox">
+                            <!-- 줄바꿈 유지해서 표시 -->
+                            <p class="tBlack mainText" v-html="formattedContent"></p>
+                            <img v-if="post.image" class="noticeImg" :src="post.image" alt="공지 이미지">
+                        </div>
+                    </div>
+                    <!-- 다음글 -->
+                    <a v-if="nextPost" :href="`/notices/${nextPost.id}/`" class="noticeList">
+                        <div class="listNumt">
+                            <span class="tBlack mainText">다음글</span>
+                        </div>
+                        <div class="listTitlet">
+                            <span class="tBlack mainText">[[ nextPost.title ]]</span>
+                        </div>
+                        <div class="listDatet">
+                            <!-- created_at 안 보내고 있어서 비워둠 / 필요하면 백엔드에 created_at 추가 -->
+                            <span class="tBlack mainText"></span>
+                        </div>
+                    </a>
+
+                    <!-- 이전글 -->
+                    <a v-if="prevPost" :href="`/notices/${prevPost.id}/`" class="noticeList">
+                        <div class="listNumt">
+                            <span class="tBlack mainText">이전글</span>
+                        </div>
+                        <div class="listTitlet">
+                            <span class="tBlack mainText">[[ prevPost.title ]]</span>
+                        </div>
+                        <div class="listDatet">
+                            <span class="tBlack mainText"></span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block scripts %}
+    <script src = "https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
+    <script src = "/js/subHeader.js"></script>
+
+    <!-- Vue & Axios CDN -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <!-- Vue 파일 -->
+    <script src="{% static 'js/vue/notice_detail.js' %}"></script>
+{% endblock %}

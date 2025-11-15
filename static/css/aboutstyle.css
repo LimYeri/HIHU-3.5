@@ -1,0 +1,281 @@
+@media screen and (max-width: 920px) {
+    .hero {
+        display: none;
+    }
+    .secondHero {
+        display: flex;
+    }
+}
+
+@media screen and (min-width: 920px) {
+    .secondHero {
+        display: none;
+    }
+    .hero {
+        display: block;
+    }
+}
+
+/*body 전체 영역*/
+.hero {
+    min-height: calc(100vh + 432px);
+}
+/* 바디 부분은 724 추가 해줘야함
+
+/*슬라이드 배너 부분*/
+.slideBanner {
+    position: relative;
+    /* height: calc(100vh - 314px); */
+    min-height: calc(100vh - 352px);
+    /* height: 30%; */
+    /* min-height: 480px; */
+    /* overflow: hidden; */
+}
+
+.slideImg {
+    min-height: calc(100vh - 352px);
+    /* height: 30%; */
+    /* min-height: 480px; */
+    width: 100vw;
+    object-fit: cover;
+}
+
+.slider {
+    display: flex;
+    /* position: absolute; */
+    position: relative;
+    z-index: -1;
+    width: 100vw;
+    min-height: calc(100vh - 352px);
+    /* height: 30%; */
+    /* margin: 0 auto; */
+    overflow: hidden;
+}
+
+.slides {
+    display: flex;
+    position: absolute;
+    height: calc(100vh - 120px);
+    left: 0;
+    top: 0;
+    transition: 0.5s ease-out;
+}
+
+.slides li {
+    /* display: flex; */
+    float: left;
+}
+
+/*aboutSection*/
+.aboutSection {
+    height: 679px;
+    width: calc(100vw - 200px);
+    /* border: 1px solid black; */
+    margin-top: 80px;
+    margin-bottom: 24px;
+    margin-right: 100px;
+    margin-left: 100px;
+}
+
+.aboutBox {
+    border-bottom: 2px solid #C3C3C3;
+    min-height: 206px;
+    margin-bottom: 24px;
+}
+
+.introTitle {
+    margin-bottom: 24px;
+    display: flex;
+}
+
+.TitleLine {
+    height: 42px;
+    width: calc(100vw - 379px);
+    margin-left: 18px;
+    border-bottom: 2px solid #C3C3C3;
+}
+
+.aboutTitle {
+    font-size: 32px;
+    margin-bottom: 24px;
+}
+
+.introText {
+    /* border-bottom: 2px solid #C3C3C3; */
+    padding-bottom: 24px;
+}
+
+.introMain {
+    margin-bottom: 8px;
+}
+
+/* .roadMap {
+    width: 947px;
+    height: 93px;
+    margin-bottom: 25px;
+    margin-top: 18px;
+} */
+
+.history {
+    height: 198px;
+}
+
+.historyLine {
+    display: flex;
+}
+
+.yearBox {
+    margin-right: 18px;
+    min-width: 180px;
+}
+
+.roadMap {
+    display: flex;
+    margin-bottom: 18px;
+}
+
+.yearNo {
+    font-size: 24px;
+}
+
+.yearLine {
+    width: 104px;
+    height: 16px;
+    margin-left: 18px;
+    border-bottom: 2px solid rgba(100, 100, 100, 0.5);
+}
+
+/* .archive {
+    height: 169px;
+} */
+
+.archiveList {
+    display: flex;
+}
+
+.listItem {
+    margin-right: 42px;
+    margin-bottom: 24px;
+}
+
+.ItemTitle {
+    margin-bottom: 8px;
+}
+
+.nameBox {
+    /* width: 142px; */
+    height: 57px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 8px;
+}
+
+.nameTag {
+    display: flex;
+    /* width: 142px; */
+}
+
+.name {
+    margin-right: 10px;
+}
+
+.secondHero {
+    min-height: calc(100vh - 120px);
+    align-items: center;
+    /* justify-content: center; */
+    flex-direction: column;
+}
+
+.historyPartition {
+    width: 100%;
+    display: flex;
+    /* align-items: center; */
+    justify-content: center;
+    flex-direction: column;
+    /* margin: 16px; */
+    /* margin-top: 16px; */
+    margin-bottom: 16px;
+}
+
+.secondIntro {
+    width: 80%;
+    /* border: 1px solid black; */
+    margin-top: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #CFCFCF;
+}
+
+.secondHistory {
+    width: 80%;
+    margin-top: 24px;
+    /* border: 1px solid black; */
+    padding-bottom: 16px;
+    border-bottom: 1px solid #CFCFCF;
+}
+
+.partitionL {
+    align-items: start;
+}
+
+.partitionR {
+    align-items: end;
+}
+
+.secondMaker {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #CFCFCF;
+}
+
+.secondMakerTitle {
+    width: 100%;
+    display: flex;
+    justify-content: start;
+}
+
+.makerContainer {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.makerPartition {
+    /* margin: 16px; */
+    margin-top: 16px;
+}
+
+.historyPartitionCon {
+    display: flex;
+    width: 100%;
+}
+
+.yearLineM {
+    width: calc(100% - 80px);
+    height: 16px;
+    margin-left: 18px;
+    margin-right: 18px;
+    border-bottom: 2px solid rgba(100, 100, 100, 0.15);
+}
+
+.yearCoverL {
+    /* border: 1px solid black; */
+    width: 80px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.yearCoverR {
+    /* border: 1px solid black; */
+    width: 80px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.mainTextM {
+    font-size: 14px;
+}

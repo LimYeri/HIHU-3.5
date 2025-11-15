@@ -1,0 +1,265 @@
+@media screen and (max-width: 950px) {
+    .menuTitle {
+        display: none;
+    }
+    .shopListScroll {
+        display: none;
+    }
+    .shopDetailBox {
+        width: 100%;
+        /* height: 920px; */
+        height: 100%;
+        /* width: 80%; */
+        display: flex;
+        border-bottom: 1px solid #787878;
+        justify-content: center;
+    }
+    .shopDetailTopBox {
+        display: flex;
+        flex-direction: column;
+        height: 660px;
+        border-bottom: 1px solid #CFCFCF;
+        width: 100%;
+    }
+    .shopDetailHero {
+        height: 1140px;
+        /* height: 800px; */
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    .shopDetailImgBox {
+        width: 100%;
+        height: 320px;
+        /* border: 1px solid black; */
+        /* margin: 20px; */
+        display: flex;
+        justify-content: center;
+    }
+    .shopDetailTextBox {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        /* border: 1px solid black; */
+        width: 100%;
+    }
+    .shopDetailMenuBox {
+        width: 100%;
+        height: 100%;
+        /* border: 1px solid black; */
+        display: flex;
+        /* justify-content: center; */
+        justify-content: flex-start;
+        align-items: center;
+        flex-direction: column;
+    }
+    .shopDetailBottom {
+        /* border: 1px solid black; */
+        height: 400px;
+        width: 100%;
+        overflow: scroll;
+        display: flex;
+        justify-content: center;
+    }
+    .shopDetailImg {
+        object-fit: cover;
+        width: 280px;
+        height: 280px;
+    }
+    .menu {
+        width: 270px;
+    }
+}
+
+@media screen and (min-width: 950px) {
+    .shopListScroll {
+        display: flex;
+    }
+    .shopDetailBox {
+        height: 920px;
+        /* width: 80%; */
+        display: flex;
+        border-bottom: 1px solid #787878;
+    }
+    .shopDetailTopBox {
+        display: flex;
+        height: 360px;
+        border-bottom: 1px solid #CFCFCF;
+        width: 100%;
+    }
+    .shopDetailHero {
+        height: 1140px;
+        /* height: 800px; */
+        width: calc(100% - 200px);
+        display: flex;
+        justify-content: center;
+        /* align-items: center; */
+        flex-direction: column;
+    }
+    .shopDetailImgBox {
+        width: 400px;
+        height: 320px;
+        /* border: 1px solid black; */
+        margin: 20px;
+    }
+    .shopDetailTextBox {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        /* border: 1px solid black; */
+        width: calc(100% - 440px);
+    }
+    .shopDetailMenuBox {
+        width: 60%;
+        height: 100%;
+        /* border: 1px solid black; */
+        display: flex;
+        /* justify-content: center; */
+        justify-content: flex-start;
+        align-items: center;
+        flex-direction: column;
+    }
+    .shopDetailBottom {
+        /* border: 1px solid black; */
+        height: 500px;
+        width: 100%;
+        overflow: scroll;
+        display: flex;
+        justify-content: center;
+    }
+    .shopDetailImg {
+        object-fit: cover;
+        width: 400px;
+        height: 320px;
+    }
+    .menu {
+        width: 420px;
+    }
+}
+
+.hero {
+    display: flex;
+    justify-content: center;
+}
+
+.shopListScroll {
+    /* border: 1px solid black; */
+    margin-top: 20px;
+    width: 20%;
+    min-width: 20%;
+    height: 880px;
+    overflow: scroll;
+    border-right: 1px solid #CFCFCF;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+
+.shopListScroll::-webkit-scrollbar {
+    width: 4px;
+
+}
+
+.shopListScroll::-webkit-scrollbar-track {
+    width: 4px;
+    background-color: white;
+}
+
+.shopListScroll::-webkit-scrollbar-thumb {
+    width: 4px;
+    border-radius: 2px;
+    background-color: #CFCFCF;
+}
+
+.shopDetailNameBox {
+    display: flex;
+    justify-content: center;
+    /* border: 1px solid black; */
+    width: 100%;
+    height: 40px;
+    margin-top: 20px;
+}
+
+.shopListName {
+    margin-top: 4px;
+    margin-bottom: 4px;
+    width: 160px;
+    /* border: 1px solid black; */
+}
+
+.shopDetailScroll {
+    width: 80%;
+}
+
+.shopDetailCate {
+    margin-top: 24px;
+    margin-bottom: 8px;
+}
+
+.shopDetailMap {
+    display: flex;
+    height: 20px;
+}
+
+.naverMapIcon {
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+}
+
+.bigmainText {
+    font-family: 'Lato';
+    font-size: 20px;
+}
+
+.menuCateBox {
+    margin-top: 16px;
+    margin-bottom: 48px;
+}
+
+.menuCategory {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 16px;
+    margin-top: 48px;
+}
+
+.menu {
+    display: flex;
+    /* border: 1px solid black; */
+    justify-content:space-between;
+    margin-bottom: 8px;
+}
+
+.menuPrice {
+    display: flex;
+}
+
+.shopDetailBottom::-webkit-scrollbar {
+    width: 4px;
+
+}
+
+.shopDetailBottom::-webkit-scrollbar-track {
+    width: 4px;
+    background-color: white;
+}
+
+.shopDetailBottom::-webkit-scrollbar-thumb {
+    width: 4px;
+    border-radius: 2px;
+    background-color: #CFCFCF;
+}
+
+.shopDetailTextCenter {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.shopDetailTextCenter {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}

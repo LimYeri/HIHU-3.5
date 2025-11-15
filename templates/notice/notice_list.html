@@ -1,0 +1,89 @@
+{% extends 'headerBox.html' %}
+{% load static %}
+{% block head %}
+    <title>HIHU3.5</title>
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/notice_list.css' %}">
+    {{ block.super }}
+{% endblock %}
+{% block content %}
+    <div id="NoticeListApp" v-cloak>
+        <div class = "hero">
+            <div class = "hihuNoticeHero">
+                <div class = "menuTitle">
+                    <h2 class = "tSemi menuTText tBlack">HIHU 공지</h2>
+                </div>
+                <div class = "noticeBox">
+                    <ul class = "noticeListBox">
+                        <!--헤더 행 (고정)-->
+                        <li class = "noticeListM">
+                            <div class = "listTitle">
+                                <span class = "tBlack mainText">제목</span> 
+                            </div>
+                            <div class = "listDate">
+                                <span class = "tBlack mainText">공지일자</span>
+                            </div>
+                        </li>
+                        <!-- Vue 공지사항 목록 렌더링 -->
+                        <a v-for="(notice, idx) in postList"
+                            :key="notice.id"
+                            :href="`/notices/${notice.id}/`"
+                            class="noticeList">
+                            <!-- <div class="listNum">
+                                <span class="tBlack mainText">[[ notice.id ]]</span>
+                            </div> -->
+                            <div class="listTitle">
+                                <span class="tBlack mainText">[[ notice.title ]]</span>
+                            </div>
+                            <div class="listDate">
+                                <span class="tBlack mainText">[[ formatDate(notice.created_at) ]]</span>
+                            </div>
+                        </a>
+                    </ul>
+                </div>
+                
+                <!-- 페이지네이션 -->
+                <div class="navNum" v-if="pageCnt > 1">
+                    <!-- 이전 버튼 -->
+                    <div class="prevNotice">
+                        <button type="button" @click="prevPage" :disabled="curPage === 1">
+                            <span class="mainText" :class="prevClass">&#9664;</span>
+                        </button>
+                    </div>
+
+                    <!-- 페이지 번호 버튼 -->
+                    <div class="noticeNum">
+                        <button
+                            v-for="page in pages"
+                            :key="page"
+                            type="button"
+                            @click="pageChanged(page)"
+                        >
+                            <span class="mainText" :class="pageClass(page)">[[ page ]]</span>
+                        </button>
+                    </div>
+
+                    <!-- 다음 버튼 -->
+                    <div class="nextNotice">
+                        <button type="button" @click="nextPage" :disabled="curPage === pageCnt">
+                            <span class="mainText" :class="nextClass">&#9654;</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>  
+    </div>
+{% endblock %}
+{% block scripts %}
+    <script src = "https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
+    <script src = "{% static 'js/subHeader.js' %}"></script>
+
+
+    <!-- Vue & Axios CDN -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <!-- Vue 파일 -->
+    <script src="{% static 'js/vue/notice_list.js' %}"></script>
+{% endblock %}

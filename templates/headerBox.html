@@ -1,0 +1,169 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="color-scheme" content="light only"/>
+	<meta name="supported-color-schemes" content="light"/>
+
+    <link rel="icon" href="{% static 'img/favi.png' %}" type="image/png">
+
+    {% block head %}
+    <style>
+        [v-cloak] { display: none; }
+    </style>
+    {% endblock %}
+</head>
+
+<body>
+    <!--div 클래스 명이 hero인 부분이 메인화면 거기 제외하고 헤더와 푸터로 구성-->
+    <div class = "container-doc">
+        <header class = "header">
+            <div class = "titleSection">
+                <a href="{% url 'home' %}">
+                    <img class = "mainLogo"src="{% static 'img/Vector 1.png' %}" alt="mainLogoImg">
+                </a>
+                <!-- <h1 class = "titleText">HIHU 3.0</h1> -->
+            </div>
+
+            <!--추가된 부분-->
+            <button class = "hotMenuContainer">
+                <img class = "hotMenu" src="{% static 'img/menuBtn.png' %}" alt="">
+            </button>
+            <button class = "hotMenuClose">
+                <img class = "hotClose" src="{% static 'img/closeBtn.png' %}" alt="">
+            </button>
+
+            <nav class = "navMenu" onclick = "navMenuOn()">
+                <a class = "mainText navText tBlack none1" href="/about">About</a>
+                <a class = "mainText navText tBlack noticehead" href="">공지사항</a>
+                <a class = "mainText navText tBlack calendarhead" href="/schedules">학사일정</a>
+                <a class = "mainText navText tBlack none3" href="">동아리</a>
+                <a class = "mainText navText tBlack bushead" href="">버스</a>
+                <a class = "mainText navText tBlack restauranthead" href="/places">식당</a>
+                <a class = "mainText navText tBlack hanseohead" href="https://www.hanseo.ac.kr/main.do?s=hs">한서대학교</a>
+            </nav>
+        </header>
+        
+        <!--추가된 부분-->
+        <subHeader class = "hotNavContainer">
+            <nav class = "hotNavMenu">
+                
+                <div class = "hotNavIconSection">
+                    <a class = "tWhite menuTText" href="">HIHU 3.5</a>
+                </div>
+                
+                <div class="hotNavIconSection">
+                    <a class = "tWhite hotNavText" href="/about">About</a>
+                    <div>
+                        <div class="menuCompressor" id = "compressorNotice">
+                            <p class = "tWhite menuTText">공지사항</p>
+                            <img class = "compressorIcon noticeCBtn" src="{% static 'img/rightCon.png' %}" alt="">
+                        </div>
+                        <div class="compressorItem" id = "cItemNotice">
+                            <a class = "tWhite hotNavSubText" href="https://www.hanseo.ac.kr/boardCnts/list.do?boardID=298&m=040101&s=hs">학사공지</a>
+                            <a class = "tWhite hotNavSubText" href="/notices">HIHU 공지</a>
+                        </div>
+                        
+                    </div>
+                    <div>
+                        <div class="menuCompressor" id = "compressorCalendar">
+                            <p class = "tWhite menuTText">학사일정</p>
+                            <img class = "compressorIcon calendarCBtn" src="{% static 'img/rightCon.png' %}" alt="">
+                        </div>
+                        <div class="compressorItem" id = "cItemCalendar">
+                            <a class = "tWhite hotNavSubText" href="https://www.hanseo.ac.kr/schdList.do?m=0405&s=hs">학사일정</a>
+                            <a class = "tWhite hotNavSubText" href="/schedules">HIHU 일정</a>
+                        </div>
+                    </div>
+                    <a class = "tWhite hotNavText" href="">동아리</a>
+                    <div>
+                        <div class="menuCompressor" id = "compressorBus">
+                            <p class = "tWhite menuTText">버스</p>
+                            <img class = "compressorIcon busCBtn" src="{% static 'img/rightCon.png' %}" alt="">
+                        </div>
+                        <div class="compressorItem" id = "cItemBus">
+                            <a class = "tWhite hotNavSubText" href="https://hsu.busro.net:456/rsvc/">버스 예매</a>
+                            <a class = "tWhite hotNavSubText" href="">버스 시간표</a>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="menuCompressor" id = "compressorRestaurant">
+                            <p class = "tWhite menuTText">식당</p>
+                            <img class = "compressorIcon restaurantCBtn" src="{% static 'img/rightCon.png' %}" alt="">
+                        </div>
+                        <div class="compressorItem" id = "cItemRestaurant">
+                            <a class = "tWhite hotNavSubText" href="">검색</a>
+                            <a class = "tWhite hotNavSubText" href="">오늘의 메뉴</a>
+                            <a class = "tWhite hotNavSubText" href="/places/?type=restaurant">식당</a>
+                            <a class = "tWhite hotNavSubText" href="/places/?type=cafe">카페</a>
+                            <a class = "tWhite hotNavSubText" href="/places/?type=bar">주점</a>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="hotNavIconSection">
+                    <div class="menuCompressor" id = "compressorSchool">
+                        <p class = "tWhite menuTText">한서대학교</p>
+                        <img class = "compressorIcon schoolCBtn" src="{% static 'img/rightCon.png' %}" alt="">
+                    </div>
+                    <div class="compressorItem" id = "cItemSchool">
+                        <a class = "tWhite hotNavSubText" href="https://www.hanseo.ac.kr/main.do?s=hs">홈</a>
+                        <a class = "tWhite hotNavSubText" href="https://nportal.hanseo.ac.kr/">포탈</a>
+                        <a class = "tWhite hotNavSubText" href="https://oc.hanseo.ac.kr/">E-Class</a>
+                    </div>
+                </div>
+            </nav>
+        </subHeader>
+
+        <div class = subHeader>
+            <nav class = "subHeaderMenu noticeMenu" id = "Notice">
+                <div class = "subHMText noticeSubMenu">
+                    <a class = "mainText navText tWhite" href="https://www.hanseo.ac.kr/boardCnts/list.do?boardID=298&m=040101&s=hs">학사공지</a>
+                    <a class = "mainText navText tWhite" href="/notices">HIHU공지</a>
+                </div>
+            </nav>
+            <nav class = "subHeaderMenu calendarMenu" id = "Notice">
+                <div class = "subHMText calendarSubMenu">
+                    <a class = "mainText navText tWhite" href="https://www.hanseo.ac.kr/schdList.do?m=0405&s=hs">학사일정</a>
+                    <a class = "mainText navText tWhite" href="/schedules">HIHU일정</a>
+                </div>
+            </nav>
+            <nav class = "subHeaderMenu busMenu" id = "bus">
+                <div class = "subHMText busSubMenu">
+                    <a class = "mainText navText tWhite" href="">버스시간표</a>
+                    <a class = "mainText navText tWhite" href="">버스예매</a>
+                </div>
+            </nav>
+            <nav class = "subHeaderMenu restaurantMenu" id = "restaurant">
+                <div class = "subHMText">
+                    <a class = "mainText navText tWhite" href="">검색</a>
+                    <a class = "mainText navText tWhite" href="">오늘의메뉴</a>
+                    <a class = "mainText navText tWhite" href="/places/?type=restaurant">식당</a>
+                    <a class = "mainText navText tWhite" href="/places/?type=cafe">카페</a>
+                    <a class = "mainText navText tWhite" href="/places/?type=bar">주점</a>
+                </div>
+            </nav>
+            <nav class = "subHeaderMenu hanseoMenu" id = "hanseo">
+                <div class = "subHMText">
+                    <a class = "mainText navText tWhite" href="https://www.hanseo.ac.kr/main.do?s=hs">홈</a>
+                    <a class = "mainText navText tWhite" href="https://nportal.hanseo.ac.kr/">포탈</a>
+                    <a class = "mainText navText tWhite" href="https://oc.hanseo.ac.kr/">E-Class</a>
+                </div>
+            </nav>
+        </div>
+
+        {# ✅ 여기: 각 페이지 내용이 들어갈 자리 #}
+        {% block content %}
+        {% endblock %}
+
+        {% include 'footerBox.html' %}
+        
+        {# ✅ js & CDN #}
+        {% block scripts %}
+        {% endblock %}
+</body>
+</html>

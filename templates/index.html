@@ -1,0 +1,119 @@
+{% extends 'headerBox.html' %}
+{% load static %}
+{% block head %}
+    <title>HIHU3.5</title>
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/indexstyle.css' %}">
+    {{ block.super }}
+{% endblock %}
+{% block content %}
+    <div class = "hero">
+        <div id="slideBannerApp" class="slideBanner">
+            <div class="slider">
+                <ul class="slides" :style="sliderStyle">
+                    <li v-for="(slide, idx) in slides" :key="slide.id">
+                        <img class="slideImg" :src="slide.image" alt="">
+                        <div class="textSlideContainer">
+                            <p class="tWhite menuTText">[[ slide.subtitle ]]</p>
+                            <h3 class="tWhite subTitleText">[[ slide.title ]]</h3>
+                            <p class="tWhite menuTText">[[ slide.description ]]</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class = "controller">
+                <div class = "playController">
+                    <p class = "prev" @click="prevSlide">
+                        <img class = "bannerCon" src="{% static 'img/leftCon.png' %}" alt="이전">
+                    </p>
+                    <div class = "stopGo" @click="togglePlay">
+                        <img class = "bannerConPlay" src="{% static 'img/playCon.png' %}" alt="">
+                    </div>
+                    <p class = "next" @click="nextSlide">
+                        <img class = "bannerCon" src="{% static 'img/rightCon.png' %}" alt="다음">
+                    </p>
+                </div>
+                <div class = "progressWrap">
+                    <div class = "progress">
+                        <div class="bar" id = "bar"></div>
+                    </div>
+                </div>
+                <div class = "page mainText tWhite">
+                    <p>[[ pageText ]]</p>
+                </div>
+            </div>
+        </div>
+        <!-- ⭐ 메인 요약 Vue 앱 루트 추가 -->
+        <div id="MainApp" v-cloak>
+            <div class="schoolSection">
+                <div class="schCalender mainText tWhite">
+                    <div class="schCalTitle">
+                        <p class="tSemi">학사일정</p>
+                        <a class="tWhite tRegular" href="/schedules">더보기 &rarr;</a>
+                    </div>
+
+                    <!-- 🔽 여기를 Vue로 교체 -->
+                    <div class="schCalText">
+                        <!-- 일정 2개 (또는 더 적게 있을 수도) -->
+                        <li v-for="item in todaySchedules"
+                            :key="item.id"
+                            class="tRegular schCalList">
+                            <a class="tWhite" href="/schedules">
+                                <p class="listTitle">[[ item.title ]]</p>
+                            </a>
+                            <p class="listDate">
+                                [[ formatDate(item.start_date) ]]
+                                <span v-if="item.end_date && item.end_date !== item.start_date">
+                                    - [[ formatDate(item.end_date) ]]
+                                </span>
+                            </p>
+                        </li>
+
+                        <!-- 일정이 아예 없을 때 -->
+                        <li v-if="!loading && todaySchedules.length === 0"
+                            class="tRegular schCalList">
+                            <p class="listTitle">오늘 이후 등록된 학사일정이 없습니다.</p>
+                            <p class="listDate"></p>
+                        </li>
+                    </div>
+                </div>
+
+                <div class="schNotice mainText tWhite">
+                    <p class="tSemi">학사공지</p>
+                    <a class="schNoticeGo tWhite tRegular" href="https://www.hanseo.ac.kr/boardCnts/list.do?boardID=298&m=040101&s=hs">
+                        학사 공지사항 보러가기 &rarr;
+                    </a>
+                </div>
+            </div>
+
+            <!-- HIHU Notice 영역도 Vue로 제목만 바꿔줄게 -->
+            <div class="hihuNotice mainText tBlack">
+                <div class="tSemi hNTitle">
+                    <p>HIHU Notice</p>
+                </div>
+                <div class="tRegular">
+                    <p v-if="latestNotice">
+                        <a class="tBlack" :href="noticeDetailUrl(latestNotice)">
+                            [[ latestNotice.title ]]
+                        </a>
+                    </p>
+                    <p v-else>
+                        HIHU 공지사항입니다.
+                    </p>
+                </div>
+            </div>
+        </div> <!-- #MainApp 끝 -->
+    </div>
+{% endblock %}
+{% block scripts %}
+    <script src = "https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
+    <script src = "{% static 'js/subHeader.js' %}"></script>
+    <script src = "{% static 'js/mobileMenu.js' %}"></script>
+    <!-- <script src = "{% static 'js/slideBanner.js' %}"></script> -->
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="{% static 'js/vue/banner.js' %}"></script>
+    <script src="{% static 'js/vue/main.js' %}"></script>
+{% endblock %}

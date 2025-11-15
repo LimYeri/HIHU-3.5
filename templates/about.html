@@ -1,0 +1,202 @@
+{% load static %}
+{% include 'headerBox.html' %}
+{% block head %}
+    <title>HIHU3.5</title>
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/aboutstyle.css' %}">
+{% endblock %}
+
+    <div class = "hero">
+        <div class = "slideBanner">
+            <div class = "slider">
+                <ul class="slides">
+                    <li>
+                        <img class = "slideImg" src="{% static 'img/airplane_sky.png' %}" alt="">
+                    </li>
+                </ul>
+                
+            </div>
+        </div>
+        <div class = "aboutSection">
+            <div class="intro aboutBox">
+                <div class = "introTitle">
+                    <h2 class = "subTitleText tBold tBlack">HIHU</h2>
+                    <div class = "TitleLine"></div>
+                </div>
+                <div class = "introText">
+                    <p class = "mainText tBold subTitleText tBlack introMain">HIHU는 버스, 학사일정, 공지사항, 주변상권 등의 정보 서비스를 제공합니다.</p>
+                    <p class = "subText tGrey">2019년 2월 29일, 항공소프트웨어공학과의 토이프로젝트로, ‘HIHU!’ 라는 이름으로 출시하였으며,</p>
+                    <p class = "subText tGrey">2022년 9월 11일, ‘HIHU 2.0’ 으로 개선되어 재출시를 통해 6개월 간 한서인의 생활에 다가갔습니다.</p>
+                    <p class = "subText tGrey">2023년 2월 29일, 기존 토이프로젝트에서 벗어나, 본격적인 웹앱을 통하여 ‘HIHU 3.0’ 으로 다시 돌아왔습니다.</p>
+                </div>
+            </div>
+            <div class="history aboutBox">
+                <div class="historyTitle">
+                    <h2 class = "aboutTitle tBlack tLato">History</h2>
+                </div>
+                <div class = "historyLine">
+                    <!-- <img class = "roadMap" src="/assets/Year.png" alt=""> -->
+                    <div class = "yearBox">
+                        <div class = "roadMap">
+                            <p class = "tBlack tLato yearNo tBold">2019</p>
+                            <div class = "yearLine"></div>
+                        </div>
+                        <div>
+                            <p class = "mainText tBlack">2월 HIHU 1.0 정식 출시</p>
+                        </div>
+                    </div>
+                    <div class = "yearBox">
+                        <div class = "roadMap">
+                            <p class = "tBlack tLato yearNo tBold">2020</p>
+                            <div class = "yearLine"></div>
+                        </div>
+                    </div>
+                    <div class = "yearBox">
+                        <div class = "roadMap">
+                            <p class = "tBlack tLato yearNo tBold">2021</p>
+                            <div class = "yearLine"></div>
+                        </div>
+                        <div>
+                            <p class = "mainText tBlack">1월 HIHU 1.0 서비스 종료</p>
+                        </div>
+                    </div>
+                    <div class = "yearBox">
+                        <div class = "roadMap">
+                            <p class = "tBlack tLato yearNo tBold">2022</p>
+                            <div class = "yearLine"></div>
+                        </div>
+                        <div>
+                            <p class = "mainText tBlack">10월 HIHU 2.0 베타 출시</p>
+                            <p class = "mainText tBlack">11월 HIHU 2.0 정식 출시</p>
+                        </div>
+                    </div>
+                    <div class = "yearBox">
+                        <div class = "roadMap">
+                            <p class = "tBlack tLato yearNo tBold">2023</p>
+                        </div>
+                        <div>
+                            <p class = "mainText tBlack">2월 HIHU 3.0 정식 출시</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="archive aboutBox">
+                <div class = "archiveTitle">
+                    <h2 class = "aboutTitle tBlack tLato">HIHU Archive</h2>
+                </div>
+                <div class = "archiveList">
+                    <div class="hihu1 tBlack listItem">
+                        <p class = "mainText ItemTitle">HIHU 1.0</p>
+                        <div class = "mainText nameBox">
+                            <div class = "nameTag">
+                                <p class = "name">18 조용현</p>
+                                <p>18 홍동현</p>
+                            </div>
+                            <div class = "nameTag">
+                                <p class = "name">18 이준우</p>
+                                <p>18 허지웅</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class = "hihu2 tBlack listItem">
+                        <p class = "mainText ItemTitle">HIHU 2.0</p>
+                        <div class = "mainText nameBox">
+                            <div class = "nameTag">
+                                <p class = "name">18 김연호</p>
+                                <p>19 박유찬</p>
+                            </div>
+                            <div class = "nameTag">
+                                <p class = "name">19 김준재</p>
+                                <p>19 이근복</p>
+                            </div>
+                            <div class = "nameTag">
+                                <p>19 강지민</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class = "hihu3 tBlack listItem">
+                        <p class = "mainText ItemTitle">HIHU 3.0</p>
+                        <div class = "mainText nameBox">
+                            <div class = "nameTag">
+                                <p class = "name">18 박대영</p>
+                                <p>20 임예리</p>
+                            </div>
+                        </div>
+                        <p class = "tGrey mainText">Service Now</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="secondHero">
+        <div class = "secondIntro">
+            <p class = "menuTText tBlack">About</p>
+            <p class = "mainTextM tBlack">HIHU는 버스, 학사일정, 공지사항, 주변 상권 정보 등의 서비스를 제공합니다.</p>
+        </div>
+        <div class="secondHistory">
+            <p class = "menuTText tBlack">HISTORY</p>
+            <div class="historyPartition partitionL">
+                <div class = "historyPartitionCon">
+                    <p class = "yearCoverL menuTText tBlack">2019</p>
+                    <div class = "yearLineM"></div>
+                </div>
+                <p class = "mainTextM tBlack">2월 HIHU 1.0 정식 출시</p>
+            </div>
+            <div class="historyPartition partitionR">
+                <div class = "historyPartitionCon">
+                    <div class = "yearLineM"></div>
+                    <p class = "yearCoverR menuTText tBlack">2021</p>
+                    
+                </div>
+                <p class = "mainTextM tBlack">1월 HIHU 1.0 서비스 종료</p>
+            </div>
+            <div class="historyPartition partitionL">
+                <div class = "historyPartitionCon">
+                    <p class = "yearCoverL menuTText tBlack">2022</p>
+                    <div class = "yearLineM"></div>
+                </div>
+                <p class = "mainTextM tBlack">10월 HIHU 2.0 베타 출시</p>
+                <p class = "mainTextM tBlack">10월 HIHU 2.0 정식 출시</p>
+                <p class = "mainTextM tBlack">12월 HIHU 2.0 서비스 종료</p>
+            </div>
+            <div class="historyPartition partitionR">
+                <div class = "historyPartitionCon">
+                    <div class = "yearLineM"></div>
+                    <p class = "yearCoverR menuTText tBlack">2023</p>
+                    
+                </div>
+                <p class = "mainTextM tBlack">3월 HIHU 3.0 정식 출시</p>
+            </div>
+        </div>
+        <div class="secondMaker">
+            <div class="secondMakerTitle">
+                <p class = "menuTText tBlack">HIHU Archive</p>
+            </div>
+            <div class="makerContainer">
+                <div class="makerPartition">
+                    <p class = "tBlack mainText tBold">HIHU 1.0</p>
+                    <p class = "tBlack mainText">18 조용현</p>
+                    <p class = "tBlack mainText">18 홍동현</p>
+                    <p class = "tBlack mainText">18 이준우</p>
+                    <p class = "tBlack mainText">18 허지웅</p>
+                </div>
+                <div class="makerPartition">
+                    <p class = "tBlack mainText tBold">HIHU 2.0</p>
+                    <p class = "tBlack mainText">18 김연호</p>
+                    <p class = "tBlack mainText">19 박유찬</p>
+                    <p class = "tBlack mainText">19 김준재</p>
+                    <p class = "tBlack mainText">19 이근복</p>
+                    <p class = "tBlack mainText">19 강지민</p>
+                </div>
+                <div class="makerPartition">
+                    <p class = "tBlack mainText tBold">HIHU 3.0</p>
+                    <p class = "tBlack mainText">18 박대영</p>
+                    <p class = "tBlack mainText">20 임예리</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% include 'footerBox.html' %}

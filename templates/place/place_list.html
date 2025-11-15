@@ -1,0 +1,163 @@
+{% extends 'headerBox.html' %}
+{% load static %}
+{% block head %}
+    <title>HIHU3.5</title>
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/place_list.css' %}">
+    {{ block.super }}
+{% endblock %}
+{% block content %}
+    <div id="PlaceListApp" v-cloak>
+        <div class="hero">
+            <div class="shopListHero">
+                <div class="menuTitle">
+                    <h2 class="tSemi menuTText tBlack">[[ mainTitle ]]</h2>
+
+                    <!-- 검색 폼 (Vue가 처리) -->
+                    <form @submit.prevent="onSubmitSearch">
+                        <div class="searchBarSection">
+                            <div class="selectBox">
+                                <select name="search_mode" id="search_mode" class="searchOption mainText" v-model="searchMode">
+                                    <option value="shop" selected>매장</option>
+                                    <option value="menu">메뉴</option>
+                                </select>
+                                <div class="selectBtn">
+                                    <img class="selectBtnImg" src="{% static 'img/select.png' %}" alt="">
+                                </div>
+                            </div>
+                            <input
+                                class="searchBar mainText"
+                                type="text"
+                                placeholder="검색어 입력"
+                                v-model="searchInput"
+                            >
+                            <button class="searchBtn" type="submit">
+                                <img class="searchImg" src="{% static 'img/search.png' %}">
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="menuListBox">
+                    <!-- 이전 페이지 버튼 -->
+                    <div class="prevBtn">
+                        <button
+                            class="prevBtnImgBox"
+                            type="button"
+                            @click="goToPage(curPage - 1)"
+                            :disabled="curPage <= 1"
+                        >
+                            <img
+                                v-if="curPage > 1"
+                                class="prevBtnImg"
+                                src="{% static 'img/nextPolygon.png' %}"
+                                alt=""
+                            >
+                            <img
+                                v-else
+                                class="prevBtnImg"
+                                src="{% static 'img/nonNextPolygon.png' %}"
+                                alt=""
+                            >
+                        </button>
+                    </div>
+
+                    <!-- 가게 리스트 -->
+                    <ul class="menuListItemBox">
+                        <li
+                            class="menuListItem"
+                            v-for="place in placeList"
+                            :key="place.id"
+                        >
+                            <a :href="getPlaceDetailUrl(place)">
+                                <img
+                                    v-if="place.image"
+                                    class="shopMainImg"
+                                    :src="place.image"
+                                    alt=""
+                                >
+                                <img
+                                    v-else
+                                    class="shopMainImg"
+                                    src="{% static 'img/DefaultImg.png' %}"
+                                    alt=""
+                                >
+                                <div class="shopMainText">
+                                    <p class="tBlack mainText">[[ place.name ]]</p>
+                                    <p v-if="getPlaceTypeKorean(place.place_type)" class="tGrey subText">
+                                        [[ getPlaceTypeKorean(place.place_type) ]]
+                                    </p>
+                                    <!-- <p v-if="place.address" class="tGrey subText">
+                                        [[ place.address ]]
+                                    </p> -->
+                                </div>
+                            </a>
+                        </li>
+
+                        <!-- 결과 없을 때 -->
+                        <li v-if="!placeList.length" class="menuListItem">
+                            <div class="shopMainText">
+                                <p class="tGrey mainText">조회된 가게가 없습니다.</p>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <!-- 다음 페이지 버튼 -->
+                    <div class="nextBtn">
+                        <button
+                            class="nextBtnImgBox"
+                            type="button"
+                            @click="goToPage(curPage + 1)"
+                            :disabled="curPage >= pageCnt"
+                        >
+                            <img
+                                v-if="curPage < pageCnt"
+                                class="nextBtnImg"
+                                src="{% static 'img/nextPolygon.png' %}"
+                                alt=""
+                            >
+                            <img
+                                v-else
+                                class="nextBtnImg"
+                                src="{% static 'img/nonNextPolygon.png' %}"
+                                alt=""
+                            >
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 페이지 번호 -->
+                <div class="navNum" v-if="pageCnt > 1">
+                    <div
+                        class="noticeNum"
+                        v-for="index in pageRange"
+                        :key="index"
+                    >
+                        <a href="javascript:void(0);" @click="goToPage(index)">
+                            <span
+                                class="mainText"
+                                :class="index === curPage ? 'tMain' : 'tGrey'"
+                            >
+                                [[ index ]]
+                            </span>
+                        </a>
+                        <span>&nbsp;</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block scripts %}
+    <script src = "https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
+    <script src = "{% static 'js/subHeader.js' %}"></script>
+
+
+    <!-- Vue & Axios CDN -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <!-- Vue 파일 -->
+    <script src="{% static 'js/vue/place_list.js' %}"></script>
+{% endblock %}

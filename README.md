@@ -16,6 +16,7 @@
 |------|-----------|
 | **Backend** | Django, Django REST Framework (DRF), Django ORM |
 | **Frontend** | Vue 3 (CDN), Axios, Django Template + Vue 혼합 구조 |
+| **DB** | MySQL |
 | **Environment** | **uv** (Python 패키지/환경 관리) |
 | **Language** | Python 3.13 |
 
